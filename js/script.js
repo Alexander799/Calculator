@@ -1,22 +1,20 @@
-var usInput = document.getElementsByTagName('button');
-var inputConcat = '';
-var num1, num2, operator, operatorTemp = /^[0-9]{0,20}[\+\-\*\/]{1}[0-9]{0,20}$/;
+var usInput = document.getElementsByTagName('button'),
+    inputConcat = '',
+    num1,
+    num2,
+    operator,
+    operatorTemp = /^[0-9]{0,20}[\+\-\*\/]{1}[0-9]{0,20}$/,
+    backspaceTemp = /[\d\*\/\+\-]Backspace/;
 
 function initial(n) {
     inputConcat += usInput[n].textContent;
     if (inputConcat.indexOf('Delete') != (-1)) {
         document.getElementById('result').innerHTML = '0';
     } else if (inputConcat.indexOf('Backspace') != (-1)) {
-        inputConcat.slice(inputConcat.length - 1);
-        document.getElementById('result').innerHTML = inputConcat;
+        inputConcat = document.getElementById('result').innerHTML = inputConcat.replace(backspaceTemp, '');
     } else {
         document.getElementById('result').innerHTML = inputConcat;
     }
-
-
-    document.getElementById('test3').innerHTML = inputConcat.indexOf('Delete') != (-1);
-    document.getElementById('test').innerHTML = inputConcat;
-    document.getElementById('test2').innerHTML = operatorTemp.test(inputConcat);
 }
 
 
