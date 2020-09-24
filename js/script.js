@@ -6,15 +6,23 @@ var usInput = document.getElementsByTagName('button'),
     operatorTemp = /^[0-9]{0,20}[\+\-\*\/]{1}[0-9]{0,20}$/,
     backspaceTemp = /[\d\*\/\+\-]Backspace/;
 
-function initial(n) {
-    inputConcat += usInput[n].textContent;
-    if (inputConcat.indexOf('Delete') != (-1)) {
+function main(n) {
+    valid(init(n));
+    /*if (inputConcat.indexOf('Delete') != (-1)) {
         cleaningMethods('Delete');
     } else if (inputConcat.indexOf('Backspace') != (-1)) {
         cleaningMethods('Backspace');
     } else {
         document.getElementById('result').innerHTML = inputConcat;
-    }
+    }*/
+}
+
+function init(inp) {
+    return inputConcat += usInput[inp].textContent;
+}
+
+function valid(validVar) {
+    document.getElementById('test').innerHTML = validVar;
 }
 
 function cleaningMethods(delOrBac) {
