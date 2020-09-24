@@ -7,20 +7,29 @@ var usInput = document.getElementsByTagName('button'),
     backspaceTemp = /[\d\*\/\+\-]Backspace/;
 
 function initial(n) {
+    inputConcat = '';
     inputConcat += usInput[n].textContent;
     if (inputConcat.indexOf('Delete') != (-1)) {
-        document.getElementById('result').innerHTML = '0';
+        cleaningMethods('Delete');
     } else if (inputConcat.indexOf('Backspace') != (-1)) {
-        inputConcat = document.getElementById('result').innerHTML = inputConcat.replace(backspaceTemp, '');
+        cleaningMethods('Backspace');
     } else {
         document.getElementById('result').innerHTML = inputConcat;
     }
 }
 
+function cleaningMethods(delOrBac) {
+    switch (delOrBac) {
+        case 'Delete':
+            inputConcat = '0';
+            document.getElementById('result').innerHTML = inputConcat;
+            break;
+        case 'Backspace':
+            document.getElementById('result').innerHTML = inputConcat.replace(backspaceTemp, 'test');
+            break;
 
-/*
-
-1.получаем значение от ввода
-2.цикл проходится по строке и проверяет ее длину. Если длина меньше 3, то выходим из усл. оператора.
-  Если значение >=3, то запускается второй цикл, который проходит по строке и ищет индекс оператора
-*/
+        default:
+            document.getElementById('result').innerHTML = 'err';
+            break;
+    }
+}
