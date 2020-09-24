@@ -7,7 +7,6 @@ var usInput = document.getElementsByTagName('button'),
     backspaceTemp = /[\d\*\/\+\-]Backspace/;
 
 function initial(n) {
-    inputConcat = '';
     inputConcat += usInput[n].textContent;
     if (inputConcat.indexOf('Delete') != (-1)) {
         cleaningMethods('Delete');
@@ -21,8 +20,8 @@ function initial(n) {
 function cleaningMethods(delOrBac) {
     switch (delOrBac) {
         case 'Delete':
-            inputConcat = '0';
-            document.getElementById('result').innerHTML = inputConcat;
+            inputConcat = '';
+            document.getElementById('result').innerHTML = '0';
             break;
         case 'Backspace':
             document.getElementById('result').innerHTML = inputConcat.replace(backspaceTemp, 'test');
